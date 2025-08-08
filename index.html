@@ -1,232 +1,477 @@
-
-<!DOCTYPE html>
-<html lang="en" dir="rtl">
+<!DOCTYPE html> 
+<html lang="en">
 <head>
-
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Saeed & Sons Agriculture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saeed & Sons</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef5db;
+      color: #23480f;
+      line-height: 1.6;
+      background-image: url(img11.jpeg);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
 
-  <!-- TailwindCSS CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <!-- Urdu Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link href="style.css" rel="stylesheet">
-  <script src="stats.js"></script>
-  <script src="js/script.js" defer></script>
+    /* HEADER */
+    header {
+      background-color: #52792d;
+      padding: 15px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      color: #eef5db;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+    }
+    .branding {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .branding img {
+      height: 55px;
+      width: 55px;
+      object-fit: contain;
+      background: white;
+      border-radius: 8px;
+    }
+    .branding h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px #23480f;
+      user-select: none;
 
 
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-grow: 1;
+      justify-content: center;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+    .nav-links li a {
+      text-decoration: none;
+      color: #eef5db;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 6px 8px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .nav-links li a:hover,
+    .nav-links li a:focus {
+      background-color: #a3c048;
+      color: #23480f;
+      outline: none;
+    }
+
+    .contact-info {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      color: #eef5db;
+      font-weight: 600;
+      user-select: none;
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background-color: transparent;
+      border: none;
+    }
+    .contact-item:hover,
+    .contact-item:focus {
+      color: #d6e9a7;
+      outline: none;
+      background-color: #466722;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 26px;
+      height: 20px;
+      justify-content: space-between;
+      margin-left: 15px;
+    }
+    .hamburger span {
+      height: 3px;
+      background-color: #eef5db;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger:focus {
+      outline: 2px solid #a3c048;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        justify-content: flex-end;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 55px;
+        left: 0;
+        right: 0;
+        background-color: #52792d;
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 30px;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        z-index: 999;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .contact-info {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        overflow-x: auto;  /* ADDED THIS TO FIX MOBILE DISPLAY */
+        padding-bottom: 10px; /* ADDED FOR SPACING */
+      }
+    }
+
+    /* Section styling */
+    section {
+      padding: 60px 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      color: #52792d;
+      margin-bottom: 25px;
+      text-align: center;
+      text-shadow: 1px 1px 2px #a3c048;
+    }
+    section p, section h3 {
+      font-size: 1.15rem;
+      color: #23480f;
+      max-width: 850px;
+      margin: 0 auto 30px auto;
+      line-height: 1.7;
+      text-align: center;
+    }
+    /* About Us Section Styling */
+#about {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #00ff00,white, #d0e8ff);
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #034078;
+  margin: 30px;
+}
+
+    /* Services */
+    .services-list {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+        display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+    }
+    .service-item {
+      background: #a3c048a0;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: 700;
+      color: #23480f;
+      font-size: 1.25rem;
+      user-select: none;
+      cursor: default;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease;
+    }
+    .service-item:hover,
+    .service-item:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+       display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img:hover,
+    .gallery-grid img:focus {
+      transform: scale(1.05);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Contact form */
+    #contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    #contact label {
+      font-weight: 600;
+      color: #52792d;
+    }
+    #contact input, #contact textarea {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1.5px solid #a3c048;
+      resize: vertical;
+      font-family: inherit;
+    }
+    #contact button {
+      background-color: #52792d;
+      color: #eef5db;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    #contact button:hover,
+    #contact button:focus {
+      background-color: #466722;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #23480f;
+      color: #d6e9a7;
+      text-align: center;
+      padding: 15px 30px;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+  </style>
 </head>
+<body>
 
-<body class="text-gray-800">
-<!-- 🌱 HEADER (STACKED STYLE) -->
-<header class="bg-green-700 text-white py-6 shadow-lg sticky top-0 z-50">
-  <div class="container mx-auto text-center space-y-4">
-    <h1 class="text-3xl font-bold">🌱 Saeed & Sons</h1>
-    
-    <nav>
-      <ul class="flex justify-center space-x-6 rtl:space-x-reverse text-lg font-medium">
-        <li><a href="#about" class="hover:underline">About / ہمارے بارے میں</a></li>
-        <li><a href="#services" class="hover:underline">Services / خدمات</a></li>
-        <li><a href="#gallery" class="hover:underline">Gallery / گیلری</a></li>
-        <li><a href="#contact" class="hover:underline">Contact / رابطہ</a></li>
-      </ul>
-    </nav>
+<header>
+  <div class="branding">
+    <img src="img0.jpg" alt="Saeed & Sons Logo🌾🌾🌾🌾" />
+    <h1>🌾🌾🌾Saeed & Sons</h1>
+  </div>
+
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" tabindex="0" aria-label="Toggle menu" aria-expanded="false" aria-controls="navigation-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="contact-info">
+    <a href="tel:+923006797671" class="contact-item">📞 03006797671</a>
+    <a href="mailto:SaeedGurmani.sons@gmail.com" class="contact-item">📧 SaeedGurmani.sons@gmail.com</a>
+    <a href="https://wa.me/923006797671" target="_blank" rel="noopener" class="contact-item">💬 WhatsApp</a>
+    <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-item">👍 Facebook</a>
   </div>
 </header>
 
+<!-- ABOUT SECTION -->
+<section id="about">
+  <h2>About Saeed & Sons</h2>
+  <h3>
+    Saeed & Sons is a name rooted in the fertile lands of South Punjab...
+  </h3>
+  <h3>
+    س   سعید اینڈ سنز، جنوبی پنجاب کی زرخیز دھرتی کا وہ نام ہے جو خالصتاً محنت، ایمان داری اور معیار کی پہچان رکھتا ہے۔ یہاں کے سنہری کھیتوں سے اُگنے والی ہر بالی میں کسان کے خواب اور قدرت کا پیار شامل ہوتا ہے۔ ہم جدید زرعی طریقوں کو صدیوں پرانی روایتوں کے ساتھ جوڑ کر ایسی فصلیں پیدا کرتے ہیں جو ذائقے میں لذیذ، خوشبو میں قدرتی اور غذائیت میں بھرپور ہوں۔ چاہے بات ہو رسیلے پھلوں کی، سبز و شاداب سبزیوں کی یا اناج کی سنہری خوشبو کی، ہم ہر فصل میں اپنے گاہک کے لیے صرف بہترین فراہم کرنے پر یقین رکھتے ہیں۔ ہمارا مشن ہے کہ ہم اپنے کھیتوں سے نکلنے والی ہر نعمت کو آپ تک تازہ ترین حالت میں پہنچائیں، تاکہ آپ اور آپ کا خاندان قدرت کا اصل ذائقہ محسوس کر سکے۔
+  </h3>
+</section>
 
-<!-- 🌾 HERO SECTION -->
-<section class="a3" data-aos="fade-up">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="text-4xl font-bold mb-4">جنوبی پنجاب کی بہترین فصلیں – اب پورے پاکستان میں</h2>
-    <p class="text-lg mb-4">High Quality Seeds, Seedlings, Vegetables & Fruits</p>
-    <a href="#contact" class="inline-block mt-6 bg-yellow-400 text-black px-6 py-2 rounded-full hover:bg-yellow-500 transition duration-300">
-      📞 آرڈر یا رابطے کیلئے یہاں کلک کریں
-    </a>
+<!-- SERVICES -->
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="services-list" role="list">
+    <div class="service-item">گندم 🌾</div>
+<div class="service-item">چاول 🍚</div>
+<div class="service-item">مکئی 🌽</div>
+<div class="service-item">آلو 🥔</div>
+<div class="service-item">گنا 🍬</div>
+<div class="service-item">گاجر 🥕</div>
+<div class="service-item">ٹماٹر 🍅</div>
+<div class="service-item">پیاز 🧅</div>
+<div class="service-item">دال ماش 🌱</div>
+<div class="service-item">دال چنا 🌰</div>
+<div class="service-item">بینگن 🍆</div>
+<div class="service-item">مولی 🌿</div>
+<div class="service-item">کھیرے 🥒</div>
+<div class="service-item">تربوز 🍉</div>
+<div class="service-item">خربوزہ 🍈</div>
+<div class="service-item">امرود 🍐</div>
+<div class="service-item">سیب 🍎</div>
+<div class="service-item">انگور 🍇</div>
+<div class="service-item">آم 🥭</div>
+<div class="service-item">لیچّی 🍒</div>
+<div class="service-item">ناریل 🥥</div>
+<div class="service-item">بادام 🌰</div>
+<div class="service-item">مٹر 🌿</div>
+
+    <!-- rest of services -->
   </div>
 </section>
 
-<!-- 🧠 ABOUT SECTION -->
-<section id="about" class="a2" data-aos="fade-right">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-    <div class="a1">
-      <h3 class="text-2xl font-bold mb-4">ہمارے بارے میں</h3>
-      <p class="leading-loose text-lg">
-        Saeed & Sons Agriculture پاکستان کا معتبر زرعی ادارہ ہے۔ ہم جنوبی پنجاب کی اعلیٰ کوالٹی فصلیں، بیج، پنیری، سبزیاں اور پھل پاکستان کے تمام علاقوں تک پہنچاتے ہیں۔
-      </p>
-    </div>
-    <div class="a1">
-      <h3 class="text-2xl font-bold mb-4">About Us</h3>
-      <p class="leading-loose text-lg">
-        We deliver premium quality seeds, crops, and plants across Pakistan, directly from South Punjab.
-      </p>
-    </div>
+<!-- GALLERY -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <div class="gallery-grid">
+<img src="img1.jpg" alt="Gallery Image 1" />
+  <img src="img2.jpg" alt="Gallery Image 2" />
+  <img src="img3.jpg" alt="Gallery Image 3" />
+  <img src="img4.jpg" alt="Gallery Image 4" />
+  <img src="img5.jpg" alt="Gallery Image 5" />
+  <img src="img6.jpg" alt="Gallery Image 6" />
+  <img src="img7.jpg" alt="Gallery Image 7" />
+  <img src="img8.jpg" alt="Gallery Image 8" />
+  <img src="img9.jpg" alt="Gallery Image 9" />
+ 
+
+  <!-- Baaki 30 images with .jpeg -->
+  <img src="img11.jpeg" alt="Gallery Image 11" />
+  <img src="img12.jpeg" alt="Gallery Image 12" />
+  <img src="img13.jpeg" alt="Gallery Image 13" />
+  <img src="img14.jpeg" alt="Gallery Image 14" />
+  <img src="img15.jpeg" alt="Gallery Image 15" />
+  <img src="img16.jpeg" alt="Gallery Image 16" />
+  <img src="img17.jpeg" alt="Gallery Image 17" />
+  <img src="img18.jpeg" alt="Gallery Image 18" />
+  <img src="img19.jpeg" alt="Gallery Image 19" />
+ 
+  <img src="img32.jpeg" alt="Gallery Image 32" />
+  <img src="img33.jpeg" alt="Gallery Image 33" />
+  <img src="img34.jpeg" alt="Gallery Image 34" />
+  <img src="img35.jpeg" alt="Gallery Image 35" />
+  <img src="img36.jpeg" alt="Gallery Image 36" />
+  <img src="img37.jpeg" alt="Gallery Image 37" />
+  <img src="img38.jpeg" alt="Gallery Image 38" />
+  <img src="img39.jpeg" alt="Gallery Image 39" />
+  <img src="img40.jpeg" alt="Gallery Image 40" />
+    <!-- rest of images -->
   </div>
 </section>
 
-
-  <!-- Services Section -->
-  <section id="services" class="section bg-green-50" data-aos="fade-left">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">ہماری خدمات / Our Services</h3>
-      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
-        <li class="glass">🌾 پیاز / Onion</li>
-        <li class="glass">🧄 لہسن / Garlic</li>
-        <li class="glass">🌶️ سبز مرچ / Green Chili</li>
-        <li class="glass">🌶️ لال مرچ / Red Chili</li>
-        <li class="glass">🌱 ہر قسم کی پنیری / All kinds of Seedlings</li>
-        <li class="glass">🌾 اعلیٰ معیار کے بیج / Premium Quality Seeds</li>
-        <li class="glass">🥦 سبزیاں / Vegetables</li>
-        <li class="glass">🍉 پھل / Fruits</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery" class="section bg-white" data-aos="fade-up">
-    <div class="max-w-6xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">گیلری / Gallery</h3>
-      <p class="mb-4 text-lg">ہماری فصلوں کی کچھ جھلکیاں</p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        
-      </div>
-    </div>
-  </section>
-  <section id="gallery" class="section bg-white" data-aos="fade-up">
-  <div class="max-w-6xl mx-auto text-center">
-    <h3 class="text-3xl font-bold mb-6">گیلری / Gallery</h3>
-    <p class="mb-4 text-lg">ہماری فصلوں کی کچھ جھلکیاں</p>
-
-    <!-- ✅ Responsive Grid Gallery -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      <img src="img1.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img2.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img3.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img4.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img5.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img6.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img7.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img8.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img9.jpg" class="w-full h-40 object-cover rounded-md">
-       <img src="img10.jpg" class="w-full h-40 object-cover rounded-md">
-      <img src="img11.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img12.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img13.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img14.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img15.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img16.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img17.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img18.jpeg" class="w-full h-40 object-cover rounded-md">
-       <img src="img19.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img20.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img21.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img22.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img23.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img24.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img25.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img26.jpeg" class="w-full h-40 object-cover rounded-md">
-       <img src="img27.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img28.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img29.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img30.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img31.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img32.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img33.jpeg" class="w-full h-40 object-cover rounded-md">
-      
-       <img src="img35.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img36.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img37.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img38.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img39.jpeg" class="w-full h-40 object-cover rounded-md">
-      <img src="img40.jpeg" class="w-full h-40 object-cover rounded-md">
+<!-- CONTACT FORM -->
+<section id="contact">
+  <form id="contactForm">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name" />
     
-    </div>
-  </div>
-</section>
-<!-- 🌾 Stats Section -->
-<section class="stats-section py-16 text-white" style="background: linear-gradient(to right, #15803d, #22c55e);">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-    <div>
-      <h2 class="stat-number text-4xl font-bold" data-target="35">0</h2>
-      <p class="text-lg">Years Experience</p>
-    </div>
-    <div>
-      <h2 class="stat-number text-4xl font-bold" data-target="100">0</h2>
-      <p class="text-lg">Crops Delivered</p>
-    </div>
-    <div>
-      <h2 class="stat-number text-4xl font-bold" data-target="50000">0</h2>
-      <p class="text-lg">Happy Farmers</p>
-    </div>
-  </div>
-</section>
-
-
-  <!-- Contact Section -->
-  <section id="contact" class="section bg-green-100" data-aos="fade-down">
-    <div class="max-w-4xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4">رابطہ / Contact</h3>
-      <p class="mb-2 text-lg">📍 Location: Bakhri Road, Kot Sultan (Layyah)</p>
-      <p class="mb-2 text-lg">📞 0300-6797671</p>
-      <p class="mb-2 text-lg">📧 Gmail:SaeedGurmani.sons@gmail.com</p>
-      <p class="mb-6 text-lg">🌐 Facebook Page:https://www.facebook.com/share/1B8EU39xoe/</p>
-      <a href="https://wa.me/923006797671" target="_blank" class="inline-block bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition">
-        📲 WhatsApp پر رابطہ کریں
-      </a>
-    </div>
-  </section>
-
-
-  <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/923006797671" class="whatsapp-float" target="_blank" title="WhatsApp پر رابطہ کریں">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
-</a>
-<!-- Floating Call Button -->
-<a href="tel:+923006797671" class="call-float" title="Call Now">
-  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Call Now" />
-</a>
-
-
-
-
-
-  <!-- 🌿 FOOTER SECTION -->
-<footer class="bg-green-800 text-white py-10">
-
-  <div class="container mx-auto px-6 text-center space-y-4">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required placeholder="Your email address" />
     
-    <h2 class="text-2xl font-bold">🌾 Saeed & Sons Agriculture 🌾</h2>
-    <p class="text-sm">جنوبی پنجاب کی معیاری پنیری، سبزیاں، بیج اور پھل – پورے پاکستان کے لیے</p>
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="5" required placeholder="Write your message here"></textarea>
+    
+    <button type="submit">Send Message</button>
+  </form>
+</section>
 
-    <div class="flex justify-center space-x-4 rtl:space-x-reverse mt-4">
-      <a href="https://wa.me/923006797671" class="hover:text-yellow-300">📱 WhatsApp</a>
-      <a href="mailto:your-email@gmail.com" class="hover:text-yellow-300">📧 Email</a>
-      <a href="https://facebook.com/yourpage" class="hover:text-yellow-300">📘 Facebook</a>
-    </div>
-
-    <p class="text-xs text-gray-300 mt-4">
-      Location: Bakhri Road, Kot Sultan (Layyah), Pakistan
-    </p>
-
-    <p class="text-xs text-gray-400">&copy; 2025 Saeed & Sons Agriculture. All rights reserved.</p>
-  </div>
+<footer>
+  &copy; 2025 Saeed & Sons. All rights reserved.
 </footer>
-  <!-- AOS Init -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-<audio id="bg-music" loop>
-  <source src="audio/farm-background.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !expanded);
+  });
+
+  hamburger.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  // WhatsApp send message on form submit
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    // WhatsApp API URL with message text
+    const phoneNumber = '923006797671'; // without +, country code included
+    const textMessage = `Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${textMessage}`;
+
+    // Open WhatsApp in new tab/window
+    window.open(whatsappURL, '_blank');
+  });
+</script>
 
 </body>
 </html>
-
